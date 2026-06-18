@@ -1,33 +1,25 @@
-import { Vec2 } from "@devrals/math";
 import "./style.css"
 
-import FloatingInSpace from "@devrals/backdrops/among-us"
+import BlackHole from "@devrals/backdrops/black_hole"
 
 const appContainer = document.getElementById("app")!;
-const AMOGUS_effects = new FloatingInSpace(50, new Vec2(1, 0))
+const blackHoleEffect = new BlackHole()
 let canvas: HTMLCanvasElement
 let ctx: CanvasRenderingContext2D;
 
 async function initContent() {
     const _canvas = document.createElement("canvas")
     _canvas.id = "background"
-    _canvas.width = FloatingInSpace.resolution.width
-    _canvas.height = FloatingInSpace.resolution.height
+    _canvas.width = BlackHole.resolution.width
+    _canvas.height = BlackHole.resolution.height
     _canvas.style.imageRendering = "pixelated"
     _canvas.style.width = "100vw"
     _canvas.style.height = "100vh"
 
     canvas = _canvas
-    window.addEventListener("error", (event) => {
-        console.error(event.error)
-    })
-
-    window.addEventListener("unhandledrejection", (event) => {
-        console.error(event.reason)
-    })
 
     window.addEventListener("keydown", k => {
-        if (k.key === "i") console.info(AMOGUS_effects)
+        if (k.key === "i") console.info(blackHoleEffect)
     })
 
     appContainer.append(canvas)
@@ -35,7 +27,7 @@ async function initContent() {
 
 async function initEngine() {
     ctx = canvas.getContext("2d")!
-    await AMOGUS_effects.init()
+    await blackHoleEffect.init()
 }
 
 async function init() {
@@ -54,8 +46,8 @@ function render() {
     lastFrameTime = now
 
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-    AMOGUS_effects.update(dt)
-    AMOGUS_effects.draw(ctx)
+    blackHoleEffect.update(dt)
+    blackHoleEffect.draw(ctx)
 
     animationId = requestAnimationFrame(render)
 }

@@ -1,6 +1,6 @@
 {
     "name": "@devrals/math",
-    "version": "0.2.1",
+    "version": "0.2.3",
     "type": "module",
     "packageManager": "pnpm@10.29.2",
     "license": "MIT",

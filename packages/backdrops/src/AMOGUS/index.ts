@@ -6,7 +6,7 @@ import { crewmateTexturePaths } from "./assets/index.js"
 type Colors = "red" | "blue" | "green" | "pink" | "orange" | "yellow" | "black" | "white" | "purple" | "brown" | "cyan"// | "lime" | "maroon" | "rose" | "banana" | "gray" | "tan" | "coral"
 type TextureIndex = 0 | 1 | 2 | 3 | 4 | 5
 type CrewTexturesType = Record<Colors, Record<TextureIndex, ImageBitmap>>
-type SpawnPosition = "top" | "bottom" | "left" | "right" | "top-right" | "top-left" | "bottom-right" | "bottom-left" | "random"
+type SpawnPosition = "top" | "bottom" | "left" | "right" | "top-right" | "top-left" | "bottom-right" | "bottom-left" | "center" | "random"
 
 interface Star {
     position: Vec2
@@ -38,11 +38,11 @@ export default class FloatingInSpace implements Backdrop<CanvasRenderingContext2
     direction: Vec2
     crewmates: Set<Crewmate>
     crewmateSizeFactor: number = 0.3
-    crewmateCount = 10
+    crewmateCount: number
 
     private stars: Star[]
     private crewTextures: CrewTexturesType
-    spawnTimer = 0
+    private spawnTimer = 0
 
 
     static readonly crewmateColors = {
@@ -78,12 +78,17 @@ export default class FloatingInSpace implements Backdrop<CanvasRenderingContext2
             case "bottom-right": return new Vec2(width + textureRes.width, height + textureRes.height)
             case "bottom-left": return new Vec2(-textureRes.width, height + textureRes.height)
 
-            case "random": return center // Unreachable
+            case "center": return center.clone()
+
+            case "random": return center.clone() // Unreachable
         }
     }
 
-    constructor(count = 100, direction = new Vec2(-1, 0)) {
+    constructor(count = 100, crewmateCount = 10, direction = new Vec2(-1, 0)) {
         this.direction = direction.normalize()
+        this.crewmateCount = crewmateCount
+
+        this.spawnTimer
 
         this.stars = new Array(count)
         for (let i = 0; i < count; i++) {
@@ -123,14 +128,14 @@ export default class FloatingInSpace implements Backdrop<CanvasRenderingContext2
         }
     }
 
-    spawnCrewmate(at: SpawnPosition) {
+    spawnCrewmate(spawnPosition: SpawnPosition | Vec2) {
         const crew: Crewmate = {
             direction: Vec2.zero(),
             position: Vec2.zero(),
 
             rotation: 0,
-            speed: randRange(1, 5),
-            rotationSpeed: randRange(-10, 10),
+            speed: randRange(3, 10),
+            rotationSpeed: randRange(-7, 7),
             color: chooseRand(Object.keys(FloatingInSpace.crewmateColors) as Colors[]),
             textureIndex: Math.floor(Math.random() * 6) as TextureIndex
         }
@@ -143,16 +148,22 @@ export default class FloatingInSpace implements Backdrop<CanvasRenderingContext2
 
         const center = FloatingInSpace.center
 
-        const spawnPosition = FloatingInSpace.getSpawnPosition(textureRes, at)
-        crew.position = spawnPosition
+        const spawnPositionVec = typeof spawnPosition === "string"
+            ? FloatingInSpace.getSpawnPosition(textureRes, spawnPosition)
+            : spawnPosition
+        crew.position = spawnPositionVec.clone()
 
-        const deviationrate = 0.3
-        const directionToCenter = center.clone().sub(spawnPosition).normalize()
+        const deviationrate = 0.8
+        const directionToCenter = center.clone().sub(spawnPositionVec).normalize()
         directionToCenter.add(new Vec2(
             randRange(-deviationrate, deviationrate),
             randRange(-deviationrate, deviationrate)
-        ))
-        crew.direction = directionToCenter
+        )).normalize()
+
+        const randomDirection = new Vec2(randRange(-1, 1), randRange(-1, 1)).normalize()
+        crew.direction = typeof spawnPosition === "string" && spawnPosition === "center"
+            ? randomDirection
+            : directionToCenter
 
         this.crewmates.add(crew)
     }

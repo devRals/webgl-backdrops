@@ -1,4 +1,4 @@
-import { chooseRand, randRange, Vec2, Vec3 } from "@devrals/math";
+import { chooseRand, randRange, Vec2, Vec3, SOLID_COLORS } from "@devrals/math";
 import type { Resolution } from "@devrals/webgl-engine";
 import type { Backdrop } from "../index.js";
 
@@ -12,8 +12,6 @@ export interface Star {
 }
 
 const SET_PER_TEXTURE_COUNT = 4
-
-const ColorTeal = Vec3.fromHex("00B2A9")
 
 export default class DreamStars implements Backdrop<CanvasRenderingContext2D> {
     private stars: Star[]
@@ -45,10 +43,10 @@ export default class DreamStars implements Backdrop<CanvasRenderingContext2D> {
         this.colors = new Array(9)
         this.colors[0] = new Vec3(255, 255, 255)
 
-        const color = dreamingColor ?? new Vec3(ColorTeal.x, ColorTeal.y, ColorTeal.z)
+        const color = dreamingColor ?? SOLID_COLORS.cyan.clone()
         for (let i = 1; i < this.colors.length; i++) {
 
-            this.colors[i] = color.mul(0.7 * (1.0 - (i / this.colors.length)))
+            this.colors[i] = color.clone().mul(0.7 * (1.0 - (i / this.colors.length)))
         }
     }
 
@@ -100,7 +98,7 @@ export default class DreamStars implements Backdrop<CanvasRenderingContext2D> {
         ctx.fillStyle = "#000000"
         ctx.fillRect(0, 0, DreamStars.resolution.width, DreamStars.resolution.height)
 
-        let num = 100
+        let num = this.stars.length
         const color = Vec3.fromHex("ffffff")
 
         if (this.dreaming) color.mul(0.7)

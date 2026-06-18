@@ -285,3 +285,35 @@ export class Vec3 {
         return new Vec3(this.x, this.y, this.z)
     }
 }
+
+/** Don't forget to use `clone` method of these */
+export const SOLID_COLORS = {
+    red: new Vec3(255, 0, 0),
+    green: new Vec3(0, 255, 0),
+    blue: new Vec3(0, 0, 255),
+
+    cyan: new Vec3(0, 255, 255),
+    purple: new Vec3(255, 0, 255),
+    yellow: new Vec3(255, 255, 0),
+
+    light_cyan: new Vec3(127, 255, 255),
+    pink: new Vec3(255, 127, 255),
+    lemon: new Vec3(255, 255, 127),
+
+    light_red: new Vec3(255, 127, 127),
+    lime: new Vec3(127, 255, 127),
+    light_blue: new Vec3(127, 127, 255),
+
+    orange: new Vec3(255, 127, 0),
+    rose: new Vec3(255, 0, 127),
+
+    leaf: new Vec3(127, 255, 0),
+    teal: new Vec3(0, 255, 127),
+
+    violet: new Vec3(127, 0, 255),
+    sky: new Vec3(0, 127, 255),
+
+    black: new Vec3(0, 0, 0),
+    gray: new Vec3(127, 127, 127),
+    white: new Vec3(255, 255, 255),
+}

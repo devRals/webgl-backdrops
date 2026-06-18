@@ -1,6 +1,6 @@
 {
     "name": "@devrals/backdrops",
-    "version": "0.2.4",
+    "version": "0.2.5",
     "type": "module",
     "packageManager": "pnpm@10.29.2",
     "license": "MIT",
@@ -20,7 +20,7 @@
         "backgrounds"
     ],
     "dependencies": {
-        "@devrals/math": "^0.2.1",
+        "@devrals/math": "^0.2.3",
         "@devrals/webgl-engine": "^0.1.4"
     },
     "exports": {
@@ -39,6 +39,10 @@
         "./among-us": {
             "types": "./dist/src/AMOGUS/index.d.ts",
             "default": "./dist/among-us.js"
+        },
+        "./black_hole": {
+            "types": "./dist/src/black_hole.d.ts",
+            "default": "./dist/black-hole.js"
         }
     }
 }

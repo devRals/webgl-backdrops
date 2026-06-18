@@ -40,8 +40,8 @@ importers:
   packages/backdrops:
     dependencies:
       '@devrals/math':
-        specifier: ^0.2.1
-        version: 0.2.1
+        specifier: ^0.2.3
+        version: 0.2.3
       '@devrals/webgl-engine':
         specifier: ^0.1.4
         version: 0.1.4
@@ -52,8 +52,8 @@ importers:
 
 packages:
 
-  '@devrals/math@0.2.1':
-    resolution: {integrity: sha512-wpERpwUI95b227G31aShF3kPTRC/0ryjTMaQYCtaIg+0UGPiNTv62mjFOjbh3tdv7LmOfBMpSuz6yoAA703BVw==}
+  '@devrals/math@0.2.3':
+    resolution: {integrity: sha512-P+1mdEK0KBqHNWFzFZ0B18qKgSUeLu5KOvIBKXWwrL/vspRxv1DpGCvLwtwTVpVV0tfVanzC3Z8PlbNzHpNqGQ==}
 
   '@devrals/webgl-engine@0.1.4':
     resolution: {integrity: sha512-kJNGi3TOoLPhcB4paFL8izu41oHTuTD385bC9dNr+W+CcxOXwrNkmGnciTjxc7aTbpZPhYx3Q6r3dq5qcL0mVQ==}
@@ -634,7 +634,7 @@ packages:
 
 snapshots:
 
-  '@devrals/math@0.2.1': {}
+  '@devrals/math@0.2.3': {}
 
   '@devrals/webgl-engine@0.1.4': {}
 
