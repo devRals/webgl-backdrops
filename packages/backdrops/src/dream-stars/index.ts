@@ -1,8 +1,8 @@
 import { chooseRand, randRange, Vec2, Vec3, SOLID_COLORS } from "@devrals/math";
-import type { Resolution } from "@devrals/webgl-engine";
 import type { Backdrop } from "../index.js";
 
 import { textureSets } from "./textures/index.js"
+import { PIXELATED_INDIE_RESOLUTION } from "../resolutions.js";
 
 export interface Star {
     position: Vec2,
@@ -23,10 +23,7 @@ export default class DreamStars implements Backdrop<CanvasRenderingContext2D> {
 
     private falling = 0
 
-    static resolution: Resolution = {
-        width: 320,
-        height: 180
-    }
+    static readonly resolution = PIXELATED_INDIE_RESOLUTION
 
     constructor(count = 100, dreamingColor?: Vec3) {
         this.stars = new Array(count)

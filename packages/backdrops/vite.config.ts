@@ -6,5 +6,6 @@ export default viteConfig({
     "dream-stars": "./src/dream-stars/index.ts",
     "among-us": "./src/AMOGUS/index.ts",
     "black-hole": "./src/black_hole.ts",
-    // "third-sanctuary": "./src/third-sanctuary/index.ts"
+    "dustforce": "./src/dustforce/index.ts",
+    // "third-sanctuary": "./src/third-sanctuary.ts"
 })

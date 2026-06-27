@@ -1,6 +1,6 @@
 import "./style.css"
 
-import BlackHole from "@devrals/backdrops/black_hole"
+import BlackHole from "@devrals/backdrops/dustforce"
 
 const appContainer = document.getElementById("app")!;
 const blackHoleEffect = new BlackHole()

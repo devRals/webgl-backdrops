@@ -2,6 +2,7 @@ import { chooseRand, randRange, Vec2, Vec3 } from "@devrals/math";
 import type { Backdrop } from "../index.js";
 import type { Resolution } from "@devrals/webgl-engine";
 import { crewmateTexturePaths } from "./assets/index.js"
+import { HIGH_QUALITY_RESOLUTION } from "../resolutions.js";
 
 type Colors = "red" | "blue" | "green" | "pink" | "orange" | "yellow" | "black" | "white" | "purple" | "brown" | "cyan"// | "lime" | "maroon" | "rose" | "banana" | "gray" | "tan" | "coral"
 type TextureIndex = 0 | 1 | 2 | 3 | 4 | 5
@@ -25,10 +26,7 @@ interface Crewmate {
 }
 
 export default class FloatingInSpace implements Backdrop<CanvasRenderingContext2D> {
-    static readonly resolution: Resolution = {
-        width: 800,
-        height: 400
-    }
+    static readonly resolution = HIGH_QUALITY_RESOLUTION
 
     private static readonly center: Vec2 = new Vec2(
         FloatingInSpace.resolution.width / 2,

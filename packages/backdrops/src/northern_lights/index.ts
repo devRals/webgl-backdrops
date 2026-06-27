@@ -4,18 +4,16 @@
 // Remember that this is just a fan remake
 
 import { approach, chooseRand, lerp, mul, randRange, Vec2, Vec3, type VertexPositionColorTexture } from "@devrals/math"
-import type { Resolution, WebGlEngine } from "@devrals/webgl-engine"
+import type { WebGlEngine } from "@devrals/webgl-engine"
 import type { Backdrop } from "../index.js"
 import northerLightsTexturePath from "./northernlights.png"
+import { PIXELATED_INDIE_RESOLUTION } from "../resolutions.js";
 
 import vertSrc from "./vertex.vert?raw"
 import fragSrc from "./fragment.frag?raw"
 
 export default class NorthernLights implements Backdrop<WebGlEngine> {
-    static resolution: Resolution = {
-        width: 320,
-        height: 180
-    } as const
+    static readonly resolution = PIXELATED_INDIE_RESOLUTION
 
     strands: Strand[]
     particles: Particle[]
