@@ -1,9 +1,10 @@
 {
     "name": "@devrals/backdrops",
-    "version": "0.2.6",
+    "version": "0.2.7",
     "type": "module",
     "packageManager": "pnpm@10.29.2",
     "license": "MIT",
+    "repository": "https://github.com/devRals/webgl-backdrops",
     "description": "A couple sets of backgrounds based of @devrals/webgl-engine and three.js",
     "files": [
         "dist"
@@ -47,6 +48,10 @@
         "./dustforce": {
             "types": "./dist/src/dustforce/index.d.ts",
             "default": "./dist/dustforce.js"
+        },
+        "./graph-structure": {
+            "types": "./dist/src/graph-structure.d.ts",
+            "default": "./dist/graph-structure.js"
         }
     }
 }

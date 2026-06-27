@@ -1,17 +1,17 @@
 import "./style.css"
 
-import BlackHole from "@devrals/backdrops/dustforce"
+import GraphStructure from "@devrals/backdrops/graph-structure"
 
 const appContainer = document.getElementById("app")!;
-const blackHoleEffect = new BlackHole()
+const graphStructureEffect = new GraphStructure()
 let canvas: HTMLCanvasElement
 let ctx: CanvasRenderingContext2D;
 
 async function initContent() {
     const _canvas = document.createElement("canvas")
     _canvas.id = "background"
-    _canvas.width = BlackHole.resolution.width
-    _canvas.height = BlackHole.resolution.height
+    _canvas.width = GraphStructure.resolution.width
+    _canvas.height = GraphStructure.resolution.height
     _canvas.style.imageRendering = "pixelated"
     _canvas.style.width = "100vw"
     _canvas.style.height = "100vh"
@@ -19,7 +19,7 @@ async function initContent() {
     canvas = _canvas
 
     window.addEventListener("keydown", k => {
-        if (k.key === "i") console.info(blackHoleEffect)
+        if (k.key === "i") console.info(graphStructureEffect)
     })
 
     appContainer.append(canvas)
@@ -27,7 +27,7 @@ async function initContent() {
 
 async function initEngine() {
     ctx = canvas.getContext("2d")!
-    await blackHoleEffect.init()
+    await graphStructureEffect.init()
 }
 
 async function init() {
@@ -46,8 +46,8 @@ function render() {
     lastFrameTime = now
 
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-    blackHoleEffect.update(dt)
-    blackHoleEffect.draw(ctx)
+    graphStructureEffect.update(dt)
+    graphStructureEffect.draw(ctx)
 
     animationId = requestAnimationFrame(render)
 }
