@@ -1,6 +1,6 @@
 import "./style.css"
 
-import GraphStructure from "@devrals/backdrops/graph-structure"
+import GraphStructure from "@devrals/backdrops/third-sanctuary"
 
 const appContainer = document.getElementById("app")!;
 const graphStructureEffect = new GraphStructure()

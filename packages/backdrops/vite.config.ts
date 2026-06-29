@@ -8,5 +8,5 @@ export default viteConfig({
     "black-hole": "./src/black_hole.ts",
     "dustforce": "./src/dustforce/index.ts",
     "graph-structure": "./src/graph-structure.ts",
-    // "third-sanctuary": "./src/third-sanctuary.ts"
+    "third-sanctuary": "./src/third-sanctuary/index.ts"
 })

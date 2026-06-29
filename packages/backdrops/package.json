@@ -1,6 +1,6 @@
 {
     "name": "@devrals/backdrops",
-    "version": "0.2.7",
+    "version": "0.3.0",
     "type": "module",
     "packageManager": "pnpm@10.29.2",
     "license": "MIT",
@@ -52,6 +52,10 @@
         "./graph-structure": {
             "types": "./dist/src/graph-structure.d.ts",
             "default": "./dist/graph-structure.js"
+        },
+        "./third-sanctuary": {
+            "types": "./dist/src/third-sanctuary/index.d.ts",
+            "default": "./dist/third-sanctuary.js"
         }
     }
 }
